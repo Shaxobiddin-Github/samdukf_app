@@ -25,7 +25,16 @@ SECRET_KEY = "django-insecure-4p20%udfnw6sthmsxx1fkhl+4wnsz*bf4j@^1efqe07=qux@19
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0"]
+# CSRF trusted origins for local development and browser access
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://0.0.0.0:8000",
+    "https://localhost:8000",
+    "https://127.0.0.1:8000",
+    "https://0.0.0.0:8000",
+]
 
 
 # Application definition
@@ -37,6 +46,20 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Custom apps
+    "foydalanuvchi_rullari",
+    "asosiy_jadvallar",
+    "rollar",
+    "students",
+    "foydalanuvchilar",
+    "plaginlar",
+    "topshirilgan_ishlar",
+    "universitet_tuzilmasi",
+    "kantent_boshqaruvi",
+    "sayt_boshqaruvi",
+    "kontent_elementlari",
+    "topshiriqlar",
+    "audit_jurnallar",
 ]
 
 MIDDLEWARE = [

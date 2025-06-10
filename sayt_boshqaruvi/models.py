@@ -19,7 +19,7 @@ class Site(models.Model):
     domain = models.CharField(max_length=100, unique=True, db_index=True)
     settings = models.JSONField(db_index=True)
     theme = models.ForeignKey(Theme, on_delete=models.PROTECT, db_index=True)
-    owner_id = models.UUIDField(db_index=True)  # FK to users.User
+    owner = models.ForeignKey('asosiy_jadvallar.User', on_delete=models.CASCADE, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
     updated_at = models.DateTimeField(null=True, blank=True, db_index=True)
 
@@ -38,7 +38,7 @@ class Page(models.Model):
     slug = models.SlugField(max_length=200, unique=True, db_index=True)
     content = models.JSONField(db_index=True)
     status = models.CharField(max_length=10, choices=Status.choices, db_index=True)
-    created_by = models.UUIDField(db_index=True)  # FK to users.User
+    created_by = models.ForeignKey('asosiy_jadvallar.User', on_delete=models.CASCADE, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
     updated_at = models.DateTimeField(null=True, blank=True, db_index=True)
 
@@ -52,7 +52,7 @@ class Template(models.Model):
     data = models.JSONField(db_index=True)
     tags = models.JSONField(null=True, blank=True, db_index=True)
     rating = models.FloatField(null=True, blank=True, db_index=True)
-    created_by = models.UUIDField(db_index=True)  # FK to users.User
+    created_by = models.ForeignKey('asosiy_jadvallar.User', on_delete=models.CASCADE, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
     def __str__(self):
